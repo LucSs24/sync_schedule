@@ -48,7 +48,7 @@ def main():
     <p>The link must not be open in a browser. You must copy the link and add it to your phone calendar application as "subscription" for iPhone and "from URL" in Google Calendar for Android. Detailed procedure is given bellow:</p>
 
     <div class="code-box">
-        https://remibellon.github.io/sync_schedule/planning_promo.ics
+        https://lucss24.github.io/sync_schedule/planning_promo.ics
     </div>
 
     <h3>iPhone (iOS)</h3>
