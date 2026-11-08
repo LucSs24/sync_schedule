@@ -1,6 +1,8 @@
 import pandas as pd
 from datetime import datetime
 
+EXCLUDED_COURSES = {"O2", "O5", "O6", "O7"}
+
 def parse_schedule(file_path: str):
     """
     Read the .ods schedule file and extract event as list
@@ -20,7 +22,7 @@ def parse_schedule(file_path: str):
             continue
 
         # --- Morning ---
-        if pd.notna(row['Course']) and str(row['Course']).strip() != 'nan':
+        if (pd.notna(row['Course']) and str(row['Course']).strip() not in EXCLUDED_COURSES and str(row['Course']).strip() != 'nan'):
             events.append({
                 'date': date_str,
                 'time': str(row['Time']).strip(),
@@ -31,7 +33,7 @@ def parse_schedule(file_path: str):
 
         # --- Afeternoon ---
         # In pandas, the 2nd column with the same name get the suffixe '.1'
-        if pd.notna(row['Course.1']) and str(row['Course.1']).strip() != 'nan':
+        if (pd.notna(row['Course.1']) and str(row['Course.1']).strip() not in EXCLUDED_COURSES and str(row['Course.1']).strip() != 'nan'):
             events.append({
                 'date': date_str,
                 'time': str(row['Time.1']).strip(),
