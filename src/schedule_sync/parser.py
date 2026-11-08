@@ -1,7 +1,6 @@
 import pandas as pd
 from datetime import datetime
-
-EXCLUDED_COURSES = {"O2", "O5", "O6", "O7"}
+import re
 
 def parse_schedule(file_path: str):
     """
@@ -24,7 +23,7 @@ def parse_schedule(file_path: str):
         if pd.notna(row['Course']):
             course = str(row['Course']).strip()
 
-            if course not in EXCLUDED_COURSES and course != 'nan':
+            if not re.search(r'\b(?:O2|O5|O6|O7)\b', course) and course != 'nan':
                 events.append({
                     'date': date_str,
                     'time': str(row['Time']).strip(),
@@ -37,7 +36,7 @@ def parse_schedule(file_path: str):
         if pd.notna(row['Course.1']):
             course = str(row['Course.1']).strip()
 
-            if course not in EXCLUDED_COURSES and course != 'nan':
+            if not re.search(r'\b(?:O2|O5|O6|O7)\b', course) and course != 'nan':
                 events.append({
                     'date': date_str,
                     'time': str(row['Time.1']).strip(),
