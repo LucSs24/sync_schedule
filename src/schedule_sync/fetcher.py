@@ -22,8 +22,8 @@ def download_schedule() -> str:
     password = os.environ.get("NEXTCLOUD_PASSWORD", "cloud_password")
 
     # File path on the server (relative to the share root)
-    file_path = "Schedule/Schedule_PPF_2026_Core.ods"
-
+    file_path = "Schedule/Schedule_PPF_2026_Electives.ods"
+    
     # Construction URL WebDAV
     webdav_url = f"{base_url}/public.php/webdav/{file_path}"
 
